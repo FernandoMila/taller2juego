@@ -1,4 +1,6 @@
-package com.mycompany.taller2juego;
+package presentacion;
+
+import presentacion.MainWindow;
 
 public class JuegoCarmenSandiego {
     public static void main(String[] args) {

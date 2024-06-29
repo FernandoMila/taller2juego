@@ -1,4 +1,4 @@
-package com.mycompany.taller2juego;
+package presentacion;
 
 import javax.sound.sampled.*;
 import javax.swing.*;

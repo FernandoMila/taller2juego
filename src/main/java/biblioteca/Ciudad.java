@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.taller2juego;
+package biblioteca;
 
 import java.awt.Image;
 import java.util.List;
@@ -16,10 +16,13 @@ public class Ciudad {
     private String nombre;
     private List<Lugar> lugares;
     private String descripcion;
-    private Image imagen;
+    private String imagen;
     private List<Ciudad> proximidad;
 
-    public Ciudad(int idCiudad, String nombre, List<Lugar> lugares, String descripcion, Image imagen, List<Ciudad> proximidad) {
+    public Ciudad() {
+    }
+
+    public Ciudad(int idCiudad, String nombre, List<Lugar> lugares, String descripcion, String imagen, List<Ciudad> proximidad) {
         this.idCiudad = idCiudad;
         this.nombre = nombre;
         this.lugares = lugares;
@@ -87,16 +90,17 @@ public class Ciudad {
     /**
      * @return the imagen
      */
-    public Image getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
     /**
      * @param imagen the imagen to set
      */
-    public void setImagen(Image imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+    
 
     /**
      * @return the proximidad

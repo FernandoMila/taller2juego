@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.taller2juego;
+package presentacion;
+
+import biblioteca.Ciudad;
+import javax.swing.ImageIcon;
+import logica.Controlador;
 
 /**
  *
@@ -15,7 +19,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
-    
+
     }
 
     /**
@@ -47,6 +51,7 @@ public class Interfaz extends javax.swing.JFrame {
         barraCriminales = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout panelCiudadLayout = new javax.swing.GroupLayout(panelCiudad);
         panelCiudad.setLayout(panelCiudadLayout);
@@ -148,6 +153,11 @@ public class Interfaz extends javax.swing.JFrame {
         barraJuego.add(creditosJuego);
 
         juegoNuevo.setText("Nuevo Juego");
+        juegoNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                juegoNuevoActionPerformed(evt);
+            }
+        });
         barraJuego.add(juegoNuevo);
 
         salirJuego.setText("Salir");
@@ -190,6 +200,16 @@ public class Interfaz extends javax.swing.JFrame {
     private void listaCiudadesProxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaCiudadesProxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaCiudadesProxActionPerformed
+
+    private void juegoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juegoNuevoActionPerformed
+        Ciudad c = new Ciudad();
+        c = new Controlador().seleccionarCiudad(1);
+        ciudadActual.setText(c.getNombre());
+        pistaLugar.setText(c.getDescripcion());
+        ImageIcon icon = new ImageIcon("imagenes/"+ c.getImagen());
+        imagenCiudad.setIcon(icon);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_juegoNuevoActionPerformed
 
     /**
      * @param args the command line arguments

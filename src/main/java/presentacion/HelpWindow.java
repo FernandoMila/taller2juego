@@ -1,4 +1,4 @@
-package com.mycompany.taller2juego;
+package presentacion;
 
 import javax.swing.*;
 import java.awt.*;
