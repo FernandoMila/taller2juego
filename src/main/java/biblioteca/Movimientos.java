@@ -12,6 +12,7 @@ import java.util.List;
  * @author grabe
  */
 public class Movimientos {
+
     private List<Ciudad> recorrido;
 
     public Movimientos(List<Ciudad> recorrido) {
@@ -31,5 +32,5 @@ public class Movimientos {
     public void setRecorrido(List<Ciudad> recorrido) {
         this.recorrido = recorrido;
     }
-    
+
 }

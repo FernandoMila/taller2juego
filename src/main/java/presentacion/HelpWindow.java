@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HelpWindow extends JFrame {
+
     private JLabel imageLabel;
     private int imageIndex = 0;
     private final String[] helpImages = {
@@ -76,4 +77,3 @@ public class HelpWindow extends JFrame {
         imageLabel.setIcon(icon);
     }
 }
-

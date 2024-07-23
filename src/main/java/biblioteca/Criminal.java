@@ -9,6 +9,7 @@ package biblioteca;
  * @author grabe
  */
 public class Criminal {
+
     private int idCriminal;
     private String nombreCriminal;
     private String sexo;
@@ -141,5 +142,4 @@ public class Criminal {
         this.caracteristica = caracteristica;
     }
 
-    
 }

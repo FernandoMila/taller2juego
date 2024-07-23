@@ -12,6 +12,7 @@ import java.util.List;
  * @author grabe
  */
 public class Ciudad {
+
     private int idCiudad;
     private String nombre;
     private List<Lugar> lugares;
@@ -100,7 +101,6 @@ public class Ciudad {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
 
     /**
      * @return the proximidad
@@ -115,7 +115,5 @@ public class Ciudad {
     public void setProximidad(List<Ciudad> proximidad) {
         this.proximidad = proximidad;
     }
-    
-    
-    
+
 }

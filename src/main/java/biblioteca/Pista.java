@@ -9,6 +9,7 @@ package biblioteca;
  * @author grabe
  */
 public class Pista {
+
     private int idPista;
     private String descripcion;
 
@@ -44,5 +45,5 @@ public class Pista {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
 }

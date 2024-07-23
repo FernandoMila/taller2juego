@@ -17,7 +17,6 @@ public class MainWindow extends JFrame {
 
         // Reproducir el sonido de inicio
         //playSound("src/main/resources/inicio.wav");
-
         // Crear un JLabel para el título
         JLabel titleLabel = new JLabel("Carmen Sandiego: Aventura en Uruguay", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Serif", Font.BOLD, 32)); // Cambiar tamaño y estilo de fuente
@@ -51,7 +50,7 @@ public class MainWindow extends JFrame {
             HelpWindow helpWindow = new HelpWindow();
             helpWindow.setVisible(true);
         });
-        
+
         // Añadir listener para el botón de ayuda
         boton1.addActionListener(e -> {
             Interfaz interfaz = new Interfaz();

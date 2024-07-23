@@ -11,6 +11,7 @@ import java.awt.Image;
  * @author grabe
  */
 public class Lugar {
+
     private int idLugar;
     private String nombre;
     private int idCiudad;
@@ -94,5 +95,5 @@ public class Lugar {
     public void setImagen(Image imagen) {
         this.imagen = imagen;
     }
-    
+
 }
