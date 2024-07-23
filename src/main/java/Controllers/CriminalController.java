@@ -76,12 +76,17 @@ public class CriminalController {
 
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Método para obtener todos los criminales
     public List<CriminalDAO> obtenerTodosLosCriminales() {
 =======
     // Método para buscar un criminal por ID o nombre
     public String buscarCriminal(String searchValue) {
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
+=======
+ // Método para obtener todos los criminales
+    public String obtenerTodosLosCriminales() {
+>>>>>>> Joao
         Session session = sessionFactory.openSession();
         CriminalDAO criminal = null;
 
@@ -102,6 +107,7 @@ public class CriminalController {
 
             session.getTransaction().commit();
 <<<<<<< HEAD
+<<<<<<< HEAD
             return listaCriminales;
 =======
 
@@ -112,11 +118,19 @@ public class CriminalController {
             }
 
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
+=======
+            StringBuilder resultado = new StringBuilder();
+            for (CriminalDAO criminal : listaCriminales) {
+                resultado.append(criminal.toString()).append("\n");
+            }
+            return resultado.toString();
+>>>>>>> Joao
         } catch (Exception e) {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
             e.printStackTrace();
+<<<<<<< HEAD
 <<<<<<< HEAD
             return null;
         } finally {
@@ -186,6 +200,9 @@ public class CriminalController {
             return "Error al buscar criminal";
 
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
+=======
+            return "Error al obtener criminales";
+>>>>>>> Joao
         } finally {
             session.close();
         }

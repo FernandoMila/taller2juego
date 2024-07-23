@@ -1,6 +1,7 @@
 package presentacion;
 
 import Controllers.CriminalController;
+<<<<<<< HEAD
 import DAO.CriminalDAO;
 <<<<<<< HEAD
 =======
@@ -9,40 +10,37 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
 
+=======
+>>>>>>> Joao
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class BuscarCriminalVista {
     private JFrame frame;
 <<<<<<< HEAD
     private JButton botonMostrarTodos;
+<<<<<<< HEAD
     private JButton botonFiltrar;
 =======
     private JTextField campoBusqueda;
     private JButton botonBuscar;
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
+=======
+>>>>>>> Joao
     private JTextArea areaResultado;
-    private JTextField campoNombre;
-    private JTextField campoSexo;
-    private JTextField campoHobbie;
-    private JTextField campoColorPelo;
-    private JTextField campoOcupacion;
-    private JTextField campoVehiculo;
-    private JTextField campoCaracteristicas;
 
     public BuscarCriminalVista() {
         // Configuración de la ventana principal
         frame = new JFrame("Buscar Criminal");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
+        frame.setSize(400, 400);
         frame.setLayout(null);
 
 <<<<<<< HEAD
         // Botón para mostrar todos los criminales
         botonMostrarTodos = new JButton("Mostrar Todos");
-        botonMostrarTodos.setBounds(10, 10, 150, 25);
+        botonMostrarTodos.setBounds(120, 10, 150, 25);
         frame.add(botonMostrarTodos);
 =======
         // Campo de entrada para la búsqueda
@@ -60,54 +58,17 @@ public class BuscarCriminalVista {
         frame.add(botonBuscar);
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
 
-        // Botón para filtrar criminales
-        botonFiltrar = new JButton("Filtrar");
-        botonFiltrar.setBounds(180, 10, 150, 25);
-        frame.add(botonFiltrar);
-
-        // Campos de texto para los filtros
-        campoNombre = new JTextField();
-        campoNombre.setBounds(10, 50, 150, 25);
-        campoNombre.setBorder(BorderFactory.createTitledBorder("Nombre"));
-        frame.add(campoNombre);
-
-        campoSexo = new JTextField();
-        campoSexo.setBounds(180, 50, 150, 25);
-        campoSexo.setBorder(BorderFactory.createTitledBorder("Sexo"));
-        frame.add(campoSexo);
-
-        campoHobbie = new JTextField();
-        campoHobbie.setBounds(350, 50, 150, 25);
-        campoHobbie.setBorder(BorderFactory.createTitledBorder("Hobbie"));
-        frame.add(campoHobbie);
-
-        campoColorPelo = new JTextField();
-        campoColorPelo.setBounds(10, 90, 150, 25);
-        campoColorPelo.setBorder(BorderFactory.createTitledBorder("Color de Pelo"));
-        frame.add(campoColorPelo);
-
-        campoOcupacion = new JTextField();
-        campoOcupacion.setBounds(180, 90, 150, 25);
-        campoOcupacion.setBorder(BorderFactory.createTitledBorder("Ocupación"));
-        frame.add(campoOcupacion);
-
-        campoVehiculo = new JTextField();
-        campoVehiculo.setBounds(350, 90, 150, 25);
-        campoVehiculo.setBorder(BorderFactory.createTitledBorder("Vehículo"));
-        frame.add(campoVehiculo);
-
-        campoCaracteristicas = new JTextField();
-        campoCaracteristicas.setBounds(10, 130, 490, 25);
-        campoCaracteristicas.setBorder(BorderFactory.createTitledBorder("Características"));
-        frame.add(campoCaracteristicas);
-
         // Área de texto para mostrar los resultados
         areaResultado = new JTextArea();
+<<<<<<< HEAD
 <<<<<<< HEAD
         areaResultado.setBounds(10, 170, 560, 380);
 =======
         areaResultado.setBounds(10, 90, 360, 250);
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
+=======
+        areaResultado.setBounds(10, 50, 360, 300);
+>>>>>>> Joao
         frame.add(areaResultado);
 
         // Acción del botón de búsqueda
@@ -119,6 +80,7 @@ public class BuscarCriminalVista {
 
 <<<<<<< HEAD
                 // Obtener todos los criminales
+<<<<<<< HEAD
                 List<CriminalDAO> criminales = controller.obtenerTodosLosCriminales();
 
                 // Limpiar el área de resultados
@@ -160,23 +122,17 @@ public class BuscarCriminalVista {
                 // Buscar el criminal por ID o Nombre
                 String resultado = controller.buscarCriminal(valorBusqueda);
 >>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
+=======
+                String resultado = controller.obtenerTodosLosCriminales();
+>>>>>>> Joao
 
                 // Mostrar el resultado en el área de texto
-                areaResultado.setText(convertirListaAString(resultado));
+                areaResultado.setText(resultado);
             }
         });
 
         // Hacer visible la ventana
         frame.setVisible(true);
-    }
-
-    // Método para convertir una lista de CriminalDAO a un String
-    private String convertirListaAString(List<CriminalDAO> lista) {
-        StringBuilder resultado = new StringBuilder();
-        for (CriminalDAO criminal : lista) {
-            resultado.append(criminal.toString()).append("\n");
-        }
-        return resultado.toString();
     }
 
     public static void main(String[] args) {
