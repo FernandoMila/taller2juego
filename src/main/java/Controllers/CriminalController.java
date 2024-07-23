@@ -76,83 +76,24 @@ public class CriminalController {
     }
 
     
-    // Método para obtener todos los criminales
-    public List<CriminalDAO> obtenerTodosLosCriminales() {
+ // Método para obtener todos los criminales
+    public String obtenerTodosLosCriminales() {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
             List<CriminalDAO> listaCriminales = session.createQuery("FROM CriminalDAO", CriminalDAO.class).list();
             session.getTransaction().commit();
-            return listaCriminales;
+            StringBuilder resultado = new StringBuilder();
+            for (CriminalDAO criminal : listaCriminales) {
+                resultado.append(criminal.toString()).append("\n");
+            }
+            return resultado.toString();
         } catch (Exception e) {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
             e.printStackTrace();
-            return null;
-        } finally {
-            session.close();
-        }
-    }
-
-    
-    // Método para filtrar criminales por todos los atributos
-    public List<CriminalDAO> filtrarCriminales(Integer idCriminal, String nombre, String hobbie, String sexo, String colorPelo, String ocupacion, String vehiculo, String caracteristicas) {
-        Session session = sessionFactory.openSession();
-        try {
-            String hql = "from CriminalDAO where 1=1";
-            if (idCriminal != null) {
-                hql += " and idCriminal = :idCriminal";
-            }
-            if (nombre != null && !nombre.isEmpty()) {
-                hql += " and nombreCriminal like :nombre";
-            }
-            if (hobbie != null && !hobbie.isEmpty()) {
-                hql += " and hobbie like :hobbie";
-            }
-            if (sexo != null && !sexo.isEmpty()) {
-                hql += " and sexo = :sexo";
-            }
-            if (colorPelo != null && !colorPelo.isEmpty()) {
-                hql += " and colorPelo like :colorPelo";
-            }
-            if (ocupacion != null && !ocupacion.isEmpty()) {
-                hql += " and ocupacion like :ocupacion";
-            }
-            if (vehiculo != null && !vehiculo.isEmpty()) {
-                hql += " and vehiculo like :vehiculo";
-            }
-            if (caracteristicas != null && !caracteristicas.isEmpty()) {
-                hql += " and caracteristicas like :caracteristicas";
-            }
-
-            var query = session.createQuery(hql, CriminalDAO.class);
-            if (idCriminal != null) {
-                query.setParameter("idCriminal", idCriminal);
-            }
-            if (nombre != null && !nombre.isEmpty()) {
-                query.setParameter("nombre", "%" + nombre + "%");
-            }
-            if (hobbie != null && !hobbie.isEmpty()) {
-                query.setParameter("hobbie", "%" + hobbie + "%");
-            }
-            if (sexo != null && !sexo.isEmpty()) {
-                query.setParameter("sexo", sexo);
-            }
-            if (colorPelo != null && !colorPelo.isEmpty()) {
-                query.setParameter("colorPelo", "%" + colorPelo + "%");
-            }
-            if (ocupacion != null && !ocupacion.isEmpty()) {
-                query.setParameter("ocupacion", "%" + ocupacion + "%");
-            }
-            if (vehiculo != null && !vehiculo.isEmpty()) {
-                query.setParameter("vehiculo", "%" + vehiculo + "%");
-            }
-            if (caracteristicas != null && !caracteristicas.isEmpty()) {
-                query.setParameter("caracteristicas", "%" + caracteristicas + "%");
-            }
-
-            return query.list();
+            return "Error al obtener criminales";
         } finally {
             session.close();
         }

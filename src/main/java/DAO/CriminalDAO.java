@@ -47,11 +47,6 @@ public class CriminalDAO {
     @Column(name="caracteristicas")
     private String caracteristica;
 
-    
-    // Constructor por defecto
-    public CriminalDAO() {
-    }
-    
     // Constructor para inicializar los atributos del criminal
     public CriminalDAO(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobbie, String caracteristica) {
         this.idCriminal = idCriminal;
