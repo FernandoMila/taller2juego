@@ -2,6 +2,12 @@ package presentacion;
 
 import Controllers.CriminalController;
 import DAO.CriminalDAO;
+<<<<<<< HEAD
+=======
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+>>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,8 +16,13 @@ import java.util.List;
 
 public class BuscarCriminalVista {
     private JFrame frame;
+<<<<<<< HEAD
     private JButton botonMostrarTodos;
     private JButton botonFiltrar;
+=======
+    private JTextField campoBusqueda;
+    private JButton botonBuscar;
+>>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
     private JTextArea areaResultado;
     private JTextField campoNombre;
     private JTextField campoSexo;
@@ -28,10 +39,26 @@ public class BuscarCriminalVista {
         frame.setSize(600, 600);
         frame.setLayout(null);
 
+<<<<<<< HEAD
         // Botón para mostrar todos los criminales
         botonMostrarTodos = new JButton("Mostrar Todos");
         botonMostrarTodos.setBounds(10, 10, 150, 25);
         frame.add(botonMostrarTodos);
+=======
+        // Campo de entrada para la búsqueda
+        JLabel etiquetaBusqueda = new JLabel("Buscar por ID o Nombre:");
+        etiquetaBusqueda.setBounds(10, 10, 150, 25);
+        frame.add(etiquetaBusqueda);
+
+        campoBusqueda = new JTextField();
+        campoBusqueda.setBounds(170, 10, 200, 25);
+        frame.add(campoBusqueda);
+
+        // Botón para iniciar la búsqueda
+        botonBuscar = new JButton("Buscar");
+        botonBuscar.setBounds(120, 50, 150, 25);
+        frame.add(botonBuscar);
+>>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
 
         // Botón para filtrar criminales
         botonFiltrar = new JButton("Filtrar");
@@ -76,16 +103,21 @@ public class BuscarCriminalVista {
 
         // Área de texto para mostrar los resultados
         areaResultado = new JTextArea();
+<<<<<<< HEAD
         areaResultado.setBounds(10, 170, 560, 380);
+=======
+        areaResultado.setBounds(10, 90, 360, 250);
+>>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
         frame.add(areaResultado);
 
-        // Acción del botón de mostrar todos
-        botonMostrarTodos.addActionListener(new ActionListener() {
+        // Acción del botón de búsqueda
+        botonBuscar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Crear una instancia de CriminalController
+                // Crear una instancia de ControladorCriminal
                 CriminalController controller = new CriminalController();
 
+<<<<<<< HEAD
                 // Obtener todos los criminales
                 List<CriminalDAO> criminales = controller.obtenerTodosLosCriminales();
 
@@ -121,6 +153,13 @@ public class BuscarCriminalVista {
 
                 // Filtrar criminales
                 List<CriminalDAO> resultado = controller.filtrarCriminales(null, nombre, hobbie, sexo, colorPelo, ocupacion, vehiculo, caracteristicas);
+=======
+                // Obtener el valor de búsqueda ingresado
+                String valorBusqueda = campoBusqueda.getText();
+
+                // Buscar el criminal por ID o Nombre
+                String resultado = controller.buscarCriminal(valorBusqueda);
+>>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
 
                 // Mostrar el resultado en el área de texto
                 areaResultado.setText(convertirListaAString(resultado));
