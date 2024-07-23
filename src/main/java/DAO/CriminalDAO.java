@@ -23,9 +23,9 @@ public class CriminalDAO {
     @Column(name="nombreCriminal")
     private String nombreCriminal;
     
-    // Hobbie o pasatiempo del criminal
-    @Column(name="hobbie")
-    private String hobbie;
+    // Hobby o pasatiempo del criminal
+    @Column(name="hobby")
+    private String hobby;
     
     // Sexo del criminal (puede ser masculino, femenino, etc.)
     @Column(name="sexo")
@@ -48,14 +48,14 @@ public class CriminalDAO {
     private String caracteristica;
 
     // Constructor para inicializar los atributos del criminal
-    public CriminalDAO(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobbie, String caracteristica) {
+    public CriminalDAO(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobby, String caracteristica) {
         this.idCriminal = idCriminal;
         this.nombreCriminal = nombreCriminal;
         this.sexo = sexo;
         this.ocupacion = ocupacion;
         this.colorPelo = colorPelo;
         this.vehiculo = vehiculo;
-        this.hobbie = hobbie;
+        this.hobby = hobby;
         this.caracteristica = caracteristica;
     }
 
@@ -109,12 +109,12 @@ public class CriminalDAO {
         this.vehiculo = vehiculo;
     }
 
-    public String getHobbie() {
-        return hobbie;
+    public String getHobby() {
+        return hobby;
     }
-        
-    public void setHobbie(String hobbie) {
-        this.hobbie = hobbie;
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
     }
 
     public String getCaracteristica() {
@@ -134,7 +134,7 @@ public class CriminalDAO {
                 ", ocupacion='" + ocupacion + '\'' +
                 ", colorPelo='" + colorPelo + '\'' +
                 ", vehiculo='" + vehiculo + '\'' +
-                ", hobbie='" + hobbie + '\'' +
+                ", hobby='" + hobby + '\'' +
                 ", caracteristica='" + caracteristica + '\'' +
                 '}';
     }
