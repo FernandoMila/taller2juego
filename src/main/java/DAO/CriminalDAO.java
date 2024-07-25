@@ -24,8 +24,8 @@ public class CriminalDAO {
     private String nombreCriminal;
     
     // Hobby o pasatiempo del criminal
-    @Column(name="hobby")
-    private String hobby;
+    @Column(name="hobbie")
+    private String hobbie;
     
     // Sexo del criminal (puede ser masculino, femenino, etc.)
     @Column(name="sexo")
@@ -48,17 +48,22 @@ public class CriminalDAO {
     private String caracteristica;
 
     // Constructor para inicializar los atributos del criminal
-    public CriminalDAO(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobby, String caracteristica) {
+    public CriminalDAO(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobbie, String caracteristica) {
         this.idCriminal = idCriminal;
         this.nombreCriminal = nombreCriminal;
         this.sexo = sexo;
         this.ocupacion = ocupacion;
         this.colorPelo = colorPelo;
         this.vehiculo = vehiculo;
-        this.hobby = hobby;
+        this.hobbie = hobbie;
         this.caracteristica = caracteristica;
     }
 
+
+    // Constructor sin argumentos
+    public CriminalDAO() {
+    }
+    
     // Métodos getter y setter para acceder y modificar los atributos privados
     
     public int getIdCriminal() {
@@ -109,12 +114,12 @@ public class CriminalDAO {
         this.vehiculo = vehiculo;
     }
 
-    public String getHobby() {
-        return hobby;
+    public String getHobbie() {
+        return hobbie;
     }
 
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
+    public void setHobbie(String hobbie) {
+        this.hobbie = hobbie;
     }
 
     public String getCaracteristica() {
@@ -134,7 +139,7 @@ public class CriminalDAO {
                 ", ocupacion='" + ocupacion + '\'' +
                 ", colorPelo='" + colorPelo + '\'' +
                 ", vehiculo='" + vehiculo + '\'' +
-                ", hobby='" + hobby + '\'' +
+                ", hobbie='" + hobbie + '\'' +
                 ", caracteristica='" + caracteristica + '\'' +
                 '}';
     }
