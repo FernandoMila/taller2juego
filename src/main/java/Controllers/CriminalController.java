@@ -4,6 +4,7 @@ import DAO.CriminalDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import java.util.List;
 
 /**
  * Controlador para manejar las operaciones relacionadas con los criminales.
@@ -30,7 +31,7 @@ public class CriminalController {
      *
      * @param idCriminal      ID del criminal
      * @param nombreCriminal  Nombre del criminal
-     * @param hobby           Hobby del criminal
+     * @param hobbie           Hobby del criminal
      * @param sexo            Sexo del criminal
      * @param colorPelo       Color de pelo del criminal
      * @param ocupacion       Ocupación del criminal
@@ -38,7 +39,7 @@ public class CriminalController {
      * @param caracteristica  Característica distintiva del criminal
      * @return                Mensaje indicando si el criminal fue creado
      */
-    public String crearCriminal(int idCriminal, String nombreCriminal, String hobby, String sexo, String colorPelo, String ocupacion,
+    public String crearCriminal(int idCriminal, String nombreCriminal, String hobbie, String sexo, String colorPelo, String ocupacion,
                                 String vehiculo, String caracteristica) {
 
         // Abrir una nueva sesión de Hibernate
@@ -46,7 +47,7 @@ public class CriminalController {
 
         try {
             // Crear una nueva instancia de CriminalDAO
-            CriminalDAO criminal = new CriminalDAO(idCriminal, nombreCriminal, sexo, ocupacion, colorPelo, vehiculo, hobby, caracteristica);
+            CriminalDAO criminal = new CriminalDAO(idCriminal, nombreCriminal, sexo, ocupacion, colorPelo, vehiculo, hobbie, caracteristica);
 
             // Iniciar una transacción de Hibernate
             session.beginTransaction();
@@ -74,71 +75,27 @@ public class CriminalController {
         }
     }
 
-    
-<<<<<<< HEAD
-<<<<<<< HEAD
     // Método para obtener todos los criminales
     public List<CriminalDAO> obtenerTodosLosCriminales() {
-=======
-    // Método para buscar un criminal por ID o nombre
-    public String buscarCriminal(String searchValue) {
->>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
-=======
- // Método para obtener todos los criminales
-    public String obtenerTodosLosCriminales() {
->>>>>>> Joao
         Session session = sessionFactory.openSession();
-        CriminalDAO criminal = null;
+        List<CriminalDAO> listaCriminales = null;
 
         try {
             session.beginTransaction();
-
-            // Intentar buscar por ID
-            try {
-                int id = Integer.parseInt(searchValue);
-                criminal = session.get(CriminalDAO.class, id);
-            } catch (NumberFormatException e) {
-                // Si no es un número, buscar por nombre
-                String hql = "FROM CriminalDAO WHERE nombreCriminal = :nombre";
-                criminal = session.createQuery(hql, CriminalDAO.class)
-                        .setParameter("nombre", searchValue)
-                        .uniqueResult();
-            }
-
+            String hql = "FROM CriminalDAO";
+            listaCriminales = session.createQuery(hql, CriminalDAO.class).list();
             session.getTransaction().commit();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            return listaCriminales;
-=======
-
-            if (criminal != null) {
-                return criminal.toString();
-            } else {
-                return "Criminal no encontrado";
-            }
-
->>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
-=======
-            StringBuilder resultado = new StringBuilder();
-            for (CriminalDAO criminal : listaCriminales) {
-                resultado.append(criminal.toString()).append("\n");
-            }
-            return resultado.toString();
->>>>>>> Joao
         } catch (Exception e) {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
             }
             e.printStackTrace();
-<<<<<<< HEAD
-<<<<<<< HEAD
-            return null;
         } finally {
             session.close();
         }
+        return listaCriminales;
     }
 
-    
     // Método para filtrar criminales por todos los atributos
     public List<CriminalDAO> filtrarCriminales(Integer idCriminal, String nombre, String hobbie, String sexo, String colorPelo, String ocupacion, String vehiculo, String caracteristicas) {
         Session session = sessionFactory.openSession();
@@ -196,13 +153,12 @@ public class CriminalController {
             }
 
             return query.list();
-=======
-            return "Error al buscar criminal";
-
->>>>>>> parent of 5276f93... Actualizar hibernate.cfg.xml, CriminalController.java y 4 más archivos...
-=======
-            return "Error al obtener criminales";
->>>>>>> Joao
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return null;
         } finally {
             session.close();
         }
