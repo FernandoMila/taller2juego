@@ -16,17 +16,17 @@ public class Criminal {
     private String ocupacion;
     private String colorPelo;
     private String vehiculo;
-    private String hobby;
+    private String hobbie;
     private String caracteristica;
 
-    public Criminal(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobby, String caracteristica) {
+    public Criminal(int idCriminal, String nombreCriminal, String sexo, String ocupacion, String colorPelo, String vehiculo, String hobbie, String caracteristica) {
         this.idCriminal = idCriminal;
         this.nombreCriminal = nombreCriminal;
         this.sexo = sexo;
         this.ocupacion = ocupacion;
         this.colorPelo = colorPelo;
         this.vehiculo = vehiculo;
-        this.hobby = hobby;
+        this.hobbie = hobbie;
         this.caracteristica = caracteristica;
     }
 
@@ -115,17 +115,17 @@ public class Criminal {
     }
 
     /**
-     * @return the hobby
+     * @return the hobbie
      */
-    public String getHobby() {
-        return hobby;
+    public String getHobbie() {
+        return hobbie;
     }
 
     /**
-     * @param hobby the hobby to set
+     * @param hobbie the hobbie to set
      */
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
+    public void setHobbie(String hobbie) {
+        this.hobbie = hobbie;
     }
 
     /**
