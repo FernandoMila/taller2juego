@@ -16,9 +16,10 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
 
         // Reproducir el sonido de inicio
-        //playSound("src/main/resources/inicio.wav");
+       // playsound("src/main/resources/inicio.wav");
+
         // Crear un JLabel para el título
-        JLabel titleLabel = new JLabel("Carmen Sandiego: Aventura en Uruguay", SwingConstants.CENTER);
+        JLabel titleLabel = new JLabel("Carmen Sandiego Aventura en Uruguay", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Serif", Font.BOLD, 32)); // Cambiar tamaño y estilo de fuente
 
         // Crear un panel para el título
@@ -37,20 +38,20 @@ public class MainWindow extends JFrame {
         // Crear los botones
         JButton boton1 = new JButton("Jugar");
         JButton boton2 = new JButton("Ayuda");
-        //JButton boton3 = new JButton("Ranking");
+        JButton boton3 = new JButton("Ranking");
 
         // Ajustar el tamaño de los botones
         Dimension buttonSize = new Dimension(120, 40);
         boton1.setPreferredSize(buttonSize);
         boton2.setPreferredSize(buttonSize);
-        //boton3.setPreferredSize(buttonSize);
+        boton3.setPreferredSize(buttonSize);
 
         // Añadir listener para el botón de ayuda
         boton2.addActionListener(e -> {
             HelpWindow helpWindow = new HelpWindow();
             helpWindow.setVisible(true);
         });
-
+        
         // Añadir listener para el botón de ayuda
         boton1.addActionListener(e -> {
             Interfaz interfaz = new Interfaz();
