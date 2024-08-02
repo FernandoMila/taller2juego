@@ -1,119 +1,73 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package biblioteca;
 
-import java.awt.Image;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author grabe
- */
 public class Ciudad {
-
-    private int idCiudad;
+    private int id;
     private String nombre;
-    private List<Lugar> lugares;
     private String descripcion;
-    private String imagen;
-    private List<Ciudad> proximidad;
+    private String rutaImagen;
+    private int x;
+    private int y;
 
-    public Ciudad() {
-    }
-
-    public Ciudad(int idCiudad, String nombre, List<Lugar> lugares, String descripcion, String imagen, List<Ciudad> proximidad) {
-        this.idCiudad = idCiudad;
+    public Ciudad(int id, String nombre, String descripcion, String rutaImagen, int x, int y) {
+        this.id = id;
         this.nombre = nombre;
-        this.lugares = lugares;
         this.descripcion = descripcion;
-        this.imagen = imagen;
-        this.proximidad = proximidad;
+        this.rutaImagen = rutaImagen;
+        this.x = x;
+        this.y = y;
+    }
+    
+    // Constructor sin argumentos
+    public Ciudad(){
+    }
+    
+    public List<Ciudad> obtenerTodasLasCiudades() {
+        List<Ciudad> ciudades = new ArrayList<>();
+        //ciudades con coordenadas 
+        ciudades.add(new Ciudad(1, "Colonia del Sacramento", "Descripción de Colonia", "imagenes/Colonia.png", 160, 480));
+        ciudades.add(new Ciudad(2, "Montevideo", "Descripción de Montevideo", "imagenes/Montevideo.png",360, 515));
+        ciudades.add(new Ciudad(3, "Juan Lacaze", "Descripción de Canelones", "imagenes/Canelones.png", 150, 400));
+        ciudades.add(new Ciudad(4, "Punta del Este", "Descripción de Maldonado", "imagenes/Maldonado.png", 510, 520));
+        ciudades.add(new Ciudad(5, "Maldonado", "Descripción de Rivera", "imagenes/Maldonado.png", 400, 100));
+        ciudades.add(new Ciudad(6, "Las Piedras", "Descripción de Salto", "imagenes/Salto.png", 350, 50));
+        ciudades.add(new Ciudad(7, "Paysandú", "Descripción de Paysandú", "imagenes/Paysandu.png", 300, 100));
+        ciudades.add(new Ciudad(8, "Artigas", "Descripción de Artigas", "imagenes/Artigas.png", 450, 50));
+        ciudades.add(new Ciudad(9, "San José", "Descripción de San José", "imagenes/SanJose.png", 250, 500));
+        ciudades.add(new Ciudad(10, "Tacuarembó", "Descripción de Tacuarembó", "imagenes/Tacuarembo.png", 400, 300));
+        ciudades.add(new Ciudad(11, "Florida", "Descripción de Florida", "imagenes/Florida.png", 300, 350));
+        ciudades.add(new Ciudad(12, "Durazno", "Descripción de Durazno", "imagenes/Durazno.png", 350, 400));
+        ciudades.add(new Ciudad(13, "Melo", "Descripción de Cerro Largo", "imagenes/CerroLargo.png", 500, 450));
+        ciudades.add(new Ciudad(14, "Punta del Diablo", "Descripción de Rocha", "imagenes/Rocha.png", 550, 500));
+        ciudades.add(new Ciudad(15, "Treinta y Tres", "Descripción de Treinta y Tres", "imagenes/TreintayTres.png", 600, 450));
+        ciudades.add(new Ciudad(16, "Lavalleja", "Descripción de Lavalleja", "imagenes/Lavalleja.png", 650, 400));
+        ciudades.add(new Ciudad(17, "Salto", "Descripción de Flores", "imagenes/Flores.png", 130, 165));
+        ciudades.add(new Ciudad(18, "Fray Bentos", "Descripción de Río Negro", "imagenes/RioNegro.png", 250, 100));
+        ciudades.add(new Ciudad(19, "Mercedes", "Descripción de Soriano", "imagenes/Soriano.png", 250, 180));
+        ciudades.add(new Ciudad(20, "Rivera", "Descripción de Rivera", "imagenes/FrayBentos.png", 100, 100));
+        ciudades.add(new Ciudad(21, "Trinidad", "Descripción de Melo", "imagenes/Melo.png", 600, 200));
+      
+        return ciudades;
     }
 
-    /**
-     * @return the idCiudad
-     */
-    public int getIdCiudad() {
-        return idCiudad;
-    }
+    // Getters y setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    /**
-     * @param idCiudad the idCiudad to set
-     */
-    public void setIdCiudad(int idCiudad) {
-        this.idCiudad = idCiudad;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getRutaImagen() { return rutaImagen; }
+    public void setRutaImagen(String rutaImagen) { this.rutaImagen = rutaImagen; }
 
-    /**
-     * @return the lugares
-     */
-    public List<Lugar> getLugares() {
-        return lugares;
-    }
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
 
-    /**
-     * @param lugares the lugares to set
-     */
-    public void setLugares(List<Lugar> lugares) {
-        this.lugares = lugares;
-    }
-
-    /**
-     * @return the descripcion
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * @param descripcion the descripcion to set
-     */
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    /**
-     * @return the imagen
-     */
-    public String getImagen() {
-        return imagen;
-    }
-
-    /**
-     * @param imagen the imagen to set
-     */
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    /**
-     * @return the proximidad
-     */
-    public List<Ciudad> getProximidad() {
-        return proximidad;
-    }
-
-    /**
-     * @param proximidad the proximidad to set
-     */
-    public void setProximidad(List<Ciudad> proximidad) {
-        this.proximidad = proximidad;
-    }
-
+    public int getY() { return y; }
+    public void setY(int y) { this.y = y; }
 }

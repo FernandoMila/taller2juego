@@ -23,7 +23,7 @@ public class CriminalDAO {
     @Column(name="nombreCriminal")
     private String nombreCriminal;
     
-    // Hobby o pasatiempo del criminal
+    // Hobbie o pasatiempo del criminal
     @Column(name="hobbie")
     private String hobbie;
     
