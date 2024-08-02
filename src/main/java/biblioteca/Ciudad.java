@@ -35,14 +35,14 @@ public class Ciudad {
         ciudades.add(new Ciudad(6, "Las Piedras", "Descripción de Salto", "imagenes/Salto.png", 350, 50));
         ciudades.add(new Ciudad(7, "Paysandú", "Descripción de Paysandú", "imagenes/Paysandu.png", 300, 100));
         ciudades.add(new Ciudad(8, "Artigas", "Descripción de Artigas", "imagenes/Artigas.png", 450, 50));
-        ciudades.add(new Ciudad(9, "San José", "Descripción de San José", "imagenes/SanJose.png", 250, 500));
+        ciudades.add(new Ciudad(9, "San José de Mayo", "Descripción de San José", "imagenes/SanJose.png", 250, 500));
         ciudades.add(new Ciudad(10, "Tacuarembó", "Descripción de Tacuarembó", "imagenes/Tacuarembo.png", 400, 300));
         ciudades.add(new Ciudad(11, "Florida", "Descripción de Florida", "imagenes/Florida.png", 300, 350));
         ciudades.add(new Ciudad(12, "Durazno", "Descripción de Durazno", "imagenes/Durazno.png", 350, 400));
         ciudades.add(new Ciudad(13, "Melo", "Descripción de Cerro Largo", "imagenes/CerroLargo.png", 500, 450));
         ciudades.add(new Ciudad(14, "Punta del Diablo", "Descripción de Rocha", "imagenes/Rocha.png", 550, 500));
         ciudades.add(new Ciudad(15, "Treinta y Tres", "Descripción de Treinta y Tres", "imagenes/TreintayTres.png", 600, 450));
-        ciudades.add(new Ciudad(16, "Lavalleja", "Descripción de Lavalleja", "imagenes/Lavalleja.png", 650, 400));
+        ciudades.add(new Ciudad(16, "Minas", "Descripción de Lavalleja", "imagenes/Lavalleja.png", 650, 400));
         ciudades.add(new Ciudad(17, "Salto", "Descripción de Flores", "imagenes/Flores.png", 130, 165));
         ciudades.add(new Ciudad(18, "Fray Bentos", "Descripción de Río Negro", "imagenes/RioNegro.png", 250, 100));
         ciudades.add(new Ciudad(19, "Mercedes", "Descripción de Soriano", "imagenes/Soriano.png", 250, 180));
