@@ -60,12 +60,12 @@ public class CriminalDAO {
     }
 
 
-    // Constructor sin argumentos
+    
     public CriminalDAO() {
     }
     
     // Métodos getter y setter para acceder y modificar los atributos privados
-    
+    // Constructor sin argumentos
     public int getIdCriminal() {
         return idCriminal;
     }
