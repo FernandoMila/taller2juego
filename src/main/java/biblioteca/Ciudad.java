@@ -28,9 +28,9 @@ public class Ciudad {
         List<Ciudad> ciudades = new ArrayList<>();
         //ciudades con coordenadas 
         ciudades.add(new Ciudad(1, "Colonia del Sacramento", "Descripción de Colonia", "imagenes/Colonia.png", 158, 480));
-        ciudades.add(new Ciudad(2, "Montevideo", "Descripción de Montevideo", "imagenes/Montevideo.png",360, 515));
+        ciudades.add(new Ciudad(2, "Montevideo", "Descripción de Montevideo", "../imagenes/CV_Montevideo.jpg",360, 515));
         ciudades.add(new Ciudad(3, "Juan Lacaze", "Descripción de Canelones", "imagenes/Canelones.png", 198, 474));
-        ciudades.add(new Ciudad(4, "Punta del Este", "Descripción de Maldonado", "imagenes/Maldonado.png", 509, 522));
+        ciudades.add(new Ciudad(4, "Punta del Este", "Descripción de Maldonado", "../imagenes/Maldonado.png", 509, 522));
         ciudades.add(new Ciudad(5, "Maldonado", "Descripción de Rivera", "imagenes/Maldonado.png", 512, 511));
         ciudades.add(new Ciudad(6, "Las Piedras", "Descripción de Las Piedras", "imagenes/Salto.png", 349, 501));
         ciudades.add(new Ciudad(7, "Paysandú", "Descripción de Paysandú", "imagenes/Paysandu.png", 114, 257));
