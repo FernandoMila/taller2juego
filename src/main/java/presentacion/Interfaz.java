@@ -5,6 +5,7 @@
 package presentacion;
 
 import biblioteca.Ciudad;
+<<<<<<< Updated upstream
 import javax.swing.ImageIcon;
 import logica.Controlador;
 
@@ -13,6 +14,40 @@ import logica.Controlador;
  * @author grabe
  */
 public class Interfaz extends javax.swing.JFrame {
+=======
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Interfaz extends JFrame {
+
+    JLabel labelNombreLugar;
+    JLabel labelFechaHora;
+    JLabel labelImagen;
+    JTextArea areaTexto;
+    JLabel labelPuntos;
+    JTextField campoNombreDetective;
+    JButton botonConfirmarNombre;
+    List<JButton> botonesCiudades = new ArrayList<>();
+    List<JButton> botonesVisitados = new ArrayList<>();
+    Point startPoint;
+    Point endPoint;
+    Timer animationTimer;
+    double currentPosition;
+
+    LocalDateTime fechaHoraActual;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, h a");
+    private int puntos = 0;
+>>>>>>> Stashed changes
 
     /**
      * Creates new form Interfaz
@@ -22,6 +57,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
 
+<<<<<<< Updated upstream
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +86,55 @@ public class Interfaz extends javax.swing.JFrame {
         barraOpciones = new javax.swing.JMenu();
         sonidoActivacion = new javax.swing.JCheckBoxMenuItem();
         barraCriminales = new javax.swing.JMenu();
+=======
+        // Crear panel superior
+        JPanel panelSuperior = new JPanel(new BorderLayout());
+        labelNombreLugar = new JLabel("Palacio", SwingConstants.CENTER);
+        labelNombreLugar.setFont(new Font("Serif", Font.BOLD, 24));
+        labelFechaHora = new JLabel(fechaHoraActual.format(formatter), SwingConstants.CENTER);
+        labelFechaHora.setFont(new Font("Serif", Font.PLAIN, 18));
+        labelPuntos = new JLabel("Puntos: 0", SwingConstants.CENTER);
+        labelPuntos.setFont(new Font("Serif", Font.BOLD, 18));
+        JPanel panelDatos = new JPanel(new GridLayout(1, 2));
+        panelDatos.add(labelFechaHora);
+        panelDatos.add(labelPuntos);
+        panelSuperior.add(labelNombreLugar, BorderLayout.NORTH);
+        panelSuperior.add(panelDatos, BorderLayout.CENTER);
+
+        // Crear panel central con GridLayout
+        JPanel panelCentral = new JPanel(new GridLayout(1, 2));
+        JPanel panelImagenDescripcion = new JPanel(new GridLayout(1, 2));
+        labelImagen = new JLabel(new ImageIcon("imagenes/ciudades/Palacio.jpeg"), SwingConstants.CENTER);
+        labelImagen.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        areaTexto = new JTextArea("En una zona alta del barrio La Aguada, se destaca el edificio Palacio Legislativo, sede del poder legislativo del estado uruguayo. Este edificio emblemático e hito urbano por excelencia, se inaugura el 25 de agosto de 1925, coincidiendo con los festejos del centenario de la Declaratoria de la Independencia del Uruguay.");
+        areaTexto.setLineWrap(true);
+        areaTexto.setWrapStyleWord(true);
+        areaTexto.setEditable(false);
+        areaTexto.setFont(new Font("Serif", Font.PLAIN, 20));
+        areaTexto.setForeground(Color.BLUE);
+        JScrollPane scrollPane = new JScrollPane(areaTexto);
+        panelImagenDescripcion.add(labelImagen);
+        panelImagenDescripcion.add(scrollPane);
+        panelCentral.add(panelImagenDescripcion);
+
+        // Crear panel para el campo de nombre y botón
+        JPanel panelNombreDetective = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelNombreDetective.setBorder(BorderFactory.createTitledBorder("Identificación del Detective"));
+        campoNombreDetective = new JTextField(20);
+        botonConfirmarNombre = new JButton("Confirmar");
+        botonConfirmarNombre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nombreDetective = campoNombreDetective.getText().trim();
+                if (!nombreDetective.isEmpty()) {
+                    guardarNombreDetective(nombreDetective);
+                }
+            }
+        });
+        panelNombreDetective.add(new JLabel("Detective, por favor identifíquese:"));
+        panelNombreDetective.add(campoNombreDetective);
+        panelNombreDetective.add(botonConfirmarNombre);
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -81,16 +166,81 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< Updated upstream
         listaCiudadesProx.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         listaCiudadesProx.setIcon(new javax.swing.ImageIcon("C:\\Users\\grabe\\OneDrive\\Documentos\\GitHub\\taller2juego\\imagenes\\Botones\\Ciudades.jpg")); // NOI18N
         listaCiudadesProx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listaCiudadesProxActionPerformed(evt);
+=======
+        // Añadir acción al botón "Mapa"
+        botonMapa.addActionListener(e -> mostrarMapa());
+        
+        botonVisitar.addActionListener(e -> mostrarLugares());
+
+        // Añadir paneles a la ventana
+        setLayout(new BorderLayout());
+        add(panelSuperior, BorderLayout.NORTH);
+        add(panelCentral, BorderLayout.CENTER);
+        add(panelNombreDetective, BorderLayout.SOUTH);
+        add(panelInferior, BorderLayout.SOUTH);
+
+        actualizarFechaHora();
+        // Hacer visible la ventana
+        setVisible(true);
+    }
+
+    private void actualizarFechaHora() {
+        labelFechaHora.setText(fechaHoraActual.format(formatter));
+    }
+
+    private JMenuBar createMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu menuJuego = new JMenu("Juego");
+        JMenuItem itemCreditos = new JMenuItem("Créditos");
+        JMenuItem itemRanking = new JMenuItem("Ranking");
+        JMenuItem itemNuevoJuego = new JMenuItem("Nuevo Juego");
+        menuJuego.add(itemCreditos);
+        menuJuego.add(itemRanking);
+        menuJuego.add(itemNuevoJuego);
+        menuBar.add(menuJuego);
+
+        JMenu menuOpciones = new JMenu("Opciones");
+        JCheckBoxMenuItem itemSonido = new JCheckBoxMenuItem("Sonido", true);
+        itemSonido.addActionListener(e -> Sonidos.toggleSonido(itemSonido.isSelected()));
+        menuOpciones.add(itemSonido);
+        menuBar.add(menuOpciones);
+
+        JMenu menuSalir = new JMenu("Salir");
+        JMenuItem itemSalir = new JMenuItem("Salir");
+        itemSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int respuesta = JOptionPane.showConfirmDialog(
+                        null,
+                        "¿Está seguro de que desea salir?",
+                        "Confirmar salida",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE
+                );
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+>>>>>>> Stashed changes
             }
         });
 
+<<<<<<< Updated upstream
         buscarLugar.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         buscarLugar.setIcon(new javax.swing.ImageIcon("C:\\Users\\grabe\\OneDrive\\Documentos\\GitHub\\taller2juego\\imagenes\\Botones\\BuscarCiudades.jpg")); // NOI18N
+=======
+        // Añadir acción al botón "Ranking"
+        itemRanking.addActionListener(e -> mostrarRanking());
+
+        return menuBar;
+    }
+>>>>>>> Stashed changes
 
         acusarCriminal.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         acusarCriminal.setIcon(new javax.swing.ImageIcon("C:\\Users\\grabe\\OneDrive\\Documentos\\GitHub\\taller2juego\\imagenes\\Botones\\Criminal.jpg")); // NOI18N
@@ -105,6 +255,7 @@ public class Interfaz extends javax.swing.JFrame {
         descripciones.setFocusable(false);
         jScrollPane1.setViewportView(descripciones);
 
+<<<<<<< Updated upstream
         javax.swing.GroupLayout panelAccionesLayout = new javax.swing.GroupLayout(panelAcciones);
         panelAcciones.setLayout(panelAccionesLayout);
         panelAccionesLayout.setHorizontalGroup(
@@ -137,6 +288,20 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(acusarCriminal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+=======
+    private void mostrarRanking() {
+        // Crear y mostrar la ventana de ranking usando RankingVista
+        SwingUtilities.invokeLater(() -> {
+            RankingVista rankingVista = new RankingVista();
+            rankingVista.setVisible(true);
+        });
+    }
+
+    void mostrarCiudad(Ciudad ciudad) {
+        labelNombreLugar.setText(ciudad.getNombre());
+        areaTexto.setText(ciudad.getDescripcion());
+        labelImagen.setIcon(new ImageIcon(ciudad.getRutaImagen())); // Cambia getImagenRuta() por getRutaImagen()
+>>>>>>> Stashed changes
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -252,6 +417,7 @@ public class Interfaz extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+<<<<<<< Updated upstream
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -281,4 +447,46 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem sonidoActivacion;
     private javax.swing.JButton viajarCiudades;
     // End of variables declaration//GEN-END:variables
+=======
+        endPoint = new Point(ciudad.getX(), ciudad.getY());
+        currentPosition = 0.0;
+        if (animationTimer != null) {
+            animationTimer.stop();
+        }
+        animationTimer = new Timer(20, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentPosition += 0.02;
+                if (currentPosition > 1) {
+                    animationTimer.stop();
+                    currentPosition = 1;
+                }
+                int x = (int) (startPoint.x + (endPoint.x - startPoint.x) * currentPosition);
+                int y = (int) (startPoint.y + (endPoint.y - startPoint.y) * currentPosition);
+                // Actualiza la posición del botón aquí
+            }
+        });
+        animationTimer.start();
+    }
+
+    private void guardarNombreDetective(String nombre) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("ranking.txt", true))) {
+            writer.write(nombre + " - Puntaje: 0");
+            writer.newLine();
+            JOptionPane.showMessageDialog(this, "Nombre del detective guardado.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al guardar el nombre del detective.");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new Interfaz());
+    }
+
+    private void mostrarLugares() {
+        Lugares l = new Lugares(1);
+        l.setVisible(true);  
+    }
+>>>>>>> Stashed changes
 }
