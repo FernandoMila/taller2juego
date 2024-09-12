@@ -1,0 +1,15 @@
+Alice,1200
+Bob,1500
+Charlie,900
+Diana,1800
+Eve,1100
+Frank,1300
+Grace,1700
+Hank,1400
+Ivy,1600
+Jack,1250
+Kara,1550
+Leo,1350
+Mona,1450
+Nina,1650
+Oscar,2000
