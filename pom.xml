@@ -6,6 +6,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <properties>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/taller2</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">1234</property>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>

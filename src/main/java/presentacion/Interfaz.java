@@ -53,6 +53,7 @@ public class Interfaz extends JFrame {
     // Nuevos atributos para el constructor con parámetros
     private Criminal criminal;
     private List<String> lista;
+    private Ciudad ciudadActual;
 
     // Constructor con parámetros
     public Interfaz(Criminal criminal, List<String> lista) {
@@ -150,8 +151,8 @@ public class Interfaz extends JFrame {
                         public void actionPerformed(ActionEvent e) {
                             List<Ciudad> ciudadesRuta = juego.getCiudadesRuta();
                             if (!ciudadesRuta.isEmpty()) {
-                                Ciudad primeraCiudad = ciudadesRuta.get(0);
-                                List<String> pistas = leerPistas(primeraCiudad.getNombre());
+                                ciudadActual = ciudadesRuta.get(0);
+                                List<String> pistas = leerPistas(ciudadActual.getNombre());
 
                                 // Mostrar las pistas directamente sin efecto de máquina de escribir
                                 for (String pista : pistas) {
@@ -210,6 +211,14 @@ public class Interfaz extends JFrame {
                 if (respuesta == JOptionPane.YES_OPTION) {
                     System.exit(0);
                 }
+            }
+        });
+        
+        botonVisitar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                MostrarLugar m = new MostrarLugar(ciudadActual);
+                m.setVisible(true);
             }
         });
 
@@ -460,7 +469,7 @@ private void detenerSonidoMaquinaEscribir() {
 
     private List<String> leerPistas(String nombreCiudad) {
         List<String> pistas = new ArrayList<>();
-        String rutaArchivo = "C:/Users/Administrador/Desktop/juego-joao/taller2juegoV9/Pistas/" + nombreCiudad + ".txt";
+        String rutaArchivo = "Pistas/" + nombreCiudad + ".txt";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
