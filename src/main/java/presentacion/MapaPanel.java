@@ -1,5 +1,6 @@
 package presentacion;
 
+import biblioteca.Sonidos;
 import biblioteca.Ciudad;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
