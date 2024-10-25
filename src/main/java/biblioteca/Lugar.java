@@ -54,44 +54,31 @@ public class Lugar {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the idCiudad
-     */
+   
     public int getIdCiudad() {
         return idCiudad;
     }
 
-    /**
-     * @param idCiudad the idCiudad to set
-     */
+  
     public void setIdCiudad(int idCiudad) {
         this.idCiudad = idCiudad;
     }
 
-    /**
-     * @return the descripcion
-     */
+   
     public String getDescripcion() {
         return descripcion;
     }
 
-    /**
-     * @param descripcion the descripcion to set
-     */
+    
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    /**
-     * @return the imagen
-     */
     public Image getImagen() {
         return imagen;
     }
 
-    /**
-     * @param imagen the imagen to set
-     */
+   
     public void setImagen(Image imagen) {
         this.imagen = imagen;
     }
