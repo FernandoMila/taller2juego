@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+Pista1: El criminal estaba interesado en la piedra alta.
+Pista2: Se escondio cerca del rio santa lucia.
+Pista3: Visito la catedral basilica.
+=======
 Pista 1: El criminal estaba interesado en la piedra alta.
 Pista 2: Se escondio cerca del rio santa lucia.
 Pista 3: Visito la catedral basilica.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

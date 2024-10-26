@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+Pista1: Queria comprar piedras preciosas en la frontera con brasil.
+Pista2: Fue visto explorando los campos de amatistas.
+Pista3: El criminal disfrutaba de los paisajes cerca del rio cuareim.
+=======
 Pista 1: Queria comprar piedras preciosas en la frontera con brasil.
 Pista 2: Fue visto explorando los campos de amatistas.
 Pista 3: El criminal disfrutaba de los paisajes cerca del rio cuareim.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

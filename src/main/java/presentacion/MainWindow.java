@@ -70,8 +70,8 @@ public class MainWindow extends JFrame {
         .toList();
 
     // Mostrar detalles del criminal seleccionado y la ruta
-    System.out.println("Criminal seleccionado: " + criminalSeleccionado.getNombreCriminal());
-    System.out.println("Ruta de escape: " + nombresCiudadesRuta);
+    //System.out.println("Criminal seleccionado2: " + criminalSeleccionado.getNombreCriminal());
+   // System.out.println("Ruta de escape2: " + nombresCiudadesRuta);
 
     // Abrir la interfaz del juego
     Interfaz interfaz = new Interfaz(criminalSeleccionado, nombresCiudadesRuta);

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+Pista1: El criminal fue visto paseando por las calles de piedra.
+Pista2: Se detuvo a observar la famosa plaza de toros.
+Pista3: Se embarco en el puerto histórico con destino desconocido.
+=======
 Pista 1: El criminal fue visto paseando por las calles de piedra.
 Pista 2: Se detuvo a observar la famosa plaza de toros.
 Pista 3: Se embarco en el puerto histórico con destino desconocido.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

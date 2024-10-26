@@ -1,5 +1,6 @@
 package presentacion;
 
+import biblioteca.Jugador;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -98,3 +99,4 @@ public class RankingVista extends JFrame {
         });
     }
 }
+

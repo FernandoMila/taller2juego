@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+Pista1: Visito el museo de la revolucion industrial.
+Pista2: Se paseo cerca del rio uruguay.
+Pista3: Le interesaba la historia de los frigorificos.
+=======
 Pista 1: Visito el museo de la revolucion industrial.
 Pista 2: Se paseo cerca del rio uruguay.
 Pista 3: Le interesaba la historia de los frigorificos.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

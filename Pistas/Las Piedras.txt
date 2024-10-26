@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+Pista1: Visito el obelisco de la batalla historica.
+Pista2: Quiso aprender sobre el famoso viñedo local.
+Pista3: Estaba buscando una forma de esconderse en las canteras.
+=======
 Pista 1: Visito el obelisco de la batalla historica.
 Pista 2: Quiso aprender sobre el famoso viñedo local.
 Pista 3: Estaba buscando una forma de esconderse en las canteras.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3

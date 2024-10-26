@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+Pista1: El criminal se dirigio al museo de arte americano.
+Pista2: Queria observar los paisajes desde el cerro pan de azucar.
+Pista3: Le gustaba la tranquilidad del barrio historico.
+=======
 Pista 1: El criminal se dirigio al museo de arte americano.
 Pista 2: Queria observar los paisajes desde el cerro pan de azucar.
 Pista 3: Le gustaba la tranquilidad del barrio historico.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+Pista1: Lo vieron en la catedral de san jose, admirando los vitrales.
+Pista2: Fue al teatro maccio a presenciar una obra local.
+Pista3: Se tomo un descanso en la plaza 33.
+=======
 Pista 1: Lo vieron en la catedral de san jose, admirando los vitrales.
 Pista 2: Fue al teatro maccio a presenciar una obra local.
 Pista 3: Se tomo un descanso en la plaza 33.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 
