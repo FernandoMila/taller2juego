@@ -1,9 +1,11 @@
 package Controllers;
 
 import DAO.CriminalDAO;
+import jakarta.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import java.util.List;
 
 /**
@@ -95,9 +97,37 @@ public class CriminalController {
         }
         return listaCriminales;
     }
+    
+    public String buscarCriminal(String hobby, String sexo, String colorPelo, String ocupacion, String vehiculo, String caracteristica) {
+    Session session = sessionFactory.openSession();
+    try {
+        String hql = "FROM CriminalDAO WHERE hobbie = :hobby AND sexo = :sexo AND colorPelo = :colorPelo AND ocupacion = :ocupacion AND vehiculo = :vehiculo AND caracteristica = :caracteristica";
+        Query<CriminalDAO> query = session.createQuery(hql, CriminalDAO.class);
+        query.setParameter("hobby", hobby);
+        query.setParameter("sexo", sexo);
+        query.setParameter("colorPelo", colorPelo);
+        query.setParameter("ocupacion", ocupacion);
+        query.setParameter("vehiculo", vehiculo);
+        query.setParameter("caracteristica", caracteristica);
+
+        CriminalDAO criminal = null;
+        try {
+            criminal = query.getSingleResult();
+        } catch (NoResultException e) {
+            // Manejar el caso cuando no se encuentra ningún resultado
+            criminal = null;
+        }
+
+        return criminal != null ? criminal.getNombreCriminal() : null;
+    } finally {
+        session.close();
+    }
+    }
+
+
 
     // Método para filtrar criminales por todos los atributos
-    public List<CriminalDAO> filtrarCriminales(Integer idCriminal, String nombre, String hobbie, String sexo, String colorPelo, String ocupacion, String vehiculo, String caracteristicas) {
+    public List<CriminalDAO> filtrarCriminales(Integer idCriminal, String nombre, String hobbie, String sexo, String colorPelo, String ocupacion, String vehiculo, String caracteristica) {
         Session session = sessionFactory.openSession();
         try {
             String hql = "from CriminalDAO where 1=1";
@@ -122,8 +152,8 @@ public class CriminalController {
             if (vehiculo != null && !vehiculo.isEmpty()) {
                 hql += " and vehiculo like :vehiculo";
             }
-            if (caracteristicas != null && !caracteristicas.isEmpty()) {
-                hql += " and caracteristicas like :caracteristicas";
+            if (caracteristica != null && !caracteristica.isEmpty()) {
+                hql += " and caracteristica like :caracteristica";
             }
 
             var query = session.createQuery(hql, CriminalDAO.class);
@@ -148,8 +178,8 @@ public class CriminalController {
             if (vehiculo != null && !vehiculo.isEmpty()) {
                 query.setParameter("vehiculo", "%" + vehiculo + "%");
             }
-            if (caracteristicas != null && !caracteristicas.isEmpty()) {
-                query.setParameter("caracteristicas", "%" + caracteristicas + "%");
+            if (caracteristica != null && !caracteristica.isEmpty()) {
+                query.setParameter("caracteristica", "%" + caracteristica + "%");
             }
 
             return query.list();

@@ -1,4 +1,4 @@
-package presentacion;
+package biblioteca;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -35,4 +35,12 @@ public class Sonidos {
             detener();
         }
     }
+    public static void reproducirSonidoMaquinaEscribir() {
+    reproducir("ruta/del/sonido/maquina_escribir.wav"); // Asegúrate de cambiar la ruta por la correcta
+}
+
+public static void detenerSonidoMaquinaEscribir() {
+    detener();
+}
+
 }
