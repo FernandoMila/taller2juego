@@ -1,136 +1,93 @@
 package presentacion;
 
 import Controllers.CriminalController;
+import java.awt.GridLayout;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class VistaCriminal {
-    private JFrame frame;
-    private JTextField campoId;
-    private JTextField campoNombre;
-    private JTextField campoHobby;
-    private JTextField campoSexo;
-    private JTextField campoColorPelo;
-    private JTextField campoOcupacion;
-    private JTextField campoVehiculo;
-    private JTextField campoCaracteristicas;
-    private JButton botonEnviar;
+// Modificar VistaCriminal para que permita la búsqueda de criminales
+public class VistaCriminal extends JFrame {
+    private JTextField txtHobby;
+    private JTextField txtSexo;
+    private JTextField txtColorPelo;
+    private JTextField txtOcupacion;
+    private JTextField txtVehiculo;
+    private JTextField txtCaracteristica;
+    private JButton btnBuscar;
+    private JLabel lblResultado;
 
     public VistaCriminal() {
-        // Configuración de la ventana principal
-        frame = new JFrame("Ingreso de Criminal");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
-        frame.setLayout(null);
+        setTitle("Buscar Criminal");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(new GridLayout(8, 2));
 
-        // Campos de entrada de datos
-        JLabel etiquetaId = new JLabel("ID Criminal:");
-        etiquetaId.setBounds(10, 10, 100, 25);
-        frame.add(etiquetaId);
+        // Añadir componentes para los datos
+        add(new JLabel("Hobby:"));
+        txtHobby = new JTextField();
+        add(txtHobby);
 
-        campoId = new JTextField();
-        campoId.setBounds(120, 10, 200, 25);
-        frame.add(campoId);
+        add(new JLabel("Sexo:"));
+        txtSexo = new JTextField();
+        add(txtSexo);
 
-        JLabel etiquetaNombre = new JLabel("Nombre:");
-        etiquetaNombre.setBounds(10, 40, 100, 25);
-        frame.add(etiquetaNombre);
+        add(new JLabel("Color de Pelo:"));
+        txtColorPelo = new JTextField();
+        add(txtColorPelo);
 
-        campoNombre = new JTextField();
-        campoNombre.setBounds(120, 40, 200, 25);
-        frame.add(campoNombre);
+        add(new JLabel("Ocupación:"));
+        txtOcupacion = new JTextField();
+        add(txtOcupacion);
 
-        JLabel etiquetaHobby = new JLabel("Hobby:");
-        etiquetaHobby.setBounds(10, 70, 100, 25);
-        frame.add(etiquetaHobby);
+        add(new JLabel("Vehículo:"));
+        txtVehiculo = new JTextField();
+        add(txtVehiculo);
 
-        campoHobby = new JTextField();
-        campoHobby.setBounds(120, 70, 200, 25);
-        frame.add(campoHobby);
+        add(new JLabel("Características:"));
+        txtCaracteristica = new JTextField();
+        add(txtCaracteristica);
 
-        JLabel etiquetaSexo = new JLabel("Sexo:");
-        etiquetaSexo.setBounds(10, 100, 100, 25);
-        frame.add(etiquetaSexo);
+        // Botón para buscar
+        btnBuscar = new JButton("Buscar Criminal");
+        add(btnBuscar);
 
-        campoSexo = new JTextField();
-        campoSexo.setBounds(120, 100, 200, 25);
-        frame.add(campoSexo);
+        // Etiqueta para mostrar el resultado
+        lblResultado = new JLabel("Resultado:");
+        add(lblResultado);
 
-        JLabel etiquetaColorPelo = new JLabel("Color de Pelo:");
-        etiquetaColorPelo.setBounds(10, 130, 100, 25);
-        frame.add(etiquetaColorPelo);
+        // Acción del botón buscar
+        btnBuscar.addActionListener(e -> buscarCriminal());
+    }
 
-        campoColorPelo = new JTextField();
-        campoColorPelo.setBounds(120, 130, 200, 25);
-        frame.add(campoColorPelo);
+    // Método para buscar criminal
+    private void buscarCriminal() {
+        String hobby = txtHobby.getText();
+        String sexo = txtSexo.getText();
+        String colorPelo = txtColorPelo.getText();
+        String ocupacion = txtOcupacion.getText();
+        String vehiculo = txtVehiculo.getText();
+        String caracteristica = txtCaracteristica.getText();
 
-        JLabel etiquetaOcupacion = new JLabel("Ocupación:");
-        etiquetaOcupacion.setBounds(10, 160, 100, 25);
-        frame.add(etiquetaOcupacion);
+        // Aquí debes integrar la lógica de CriminalController para buscar al criminal
+        CriminalController controller = new CriminalController();
+        String nombreCriminal = controller.buscarCriminal(hobby, sexo, colorPelo, ocupacion, vehiculo, caracteristica);
 
-        campoOcupacion = new JTextField();
-        campoOcupacion.setBounds(120, 160, 200, 25);
-        frame.add(campoOcupacion);
-
-        JLabel etiquetaVehiculo = new JLabel("Vehículo:");
-        etiquetaVehiculo.setBounds(10, 190, 100, 25);
-        frame.add(etiquetaVehiculo);
-
-        campoVehiculo = new JTextField();
-        campoVehiculo.setBounds(120, 190, 200, 25);
-        frame.add(campoVehiculo);
-
-        JLabel etiquetaCaracteristicas = new JLabel("Características:");
-        etiquetaCaracteristicas.setBounds(10, 220, 100, 25);
-        frame.add(etiquetaCaracteristicas);
-
-        campoCaracteristicas = new JTextField();
-        campoCaracteristicas.setBounds(120, 220, 200, 25);
-        frame.add(campoCaracteristicas);
-
-        // Botón para enviar los datos
-        botonEnviar = new JButton("Crear Criminal");
-        botonEnviar.setBounds(120, 260, 150, 25);
-        frame.add(botonEnviar);
-
-        // Acción del botón
-        botonEnviar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Crear una instancia de CriminalController
-                CriminalController controller = new CriminalController();
-
-                // Obtener los datos ingresados
-                int id = Integer.parseInt(campoId.getText());
-                String nombre = campoNombre.getText();
-                String hobby = campoHobby.getText();
-                String sexo = campoSexo.getText();
-                String colorPelo = campoColorPelo.getText();
-                String ocupacion = campoOcupacion.getText();
-                String vehiculo = campoVehiculo.getText();
-                String caracteristicas = campoCaracteristicas.getText();
-
-                // Llamar al método para crear un criminal
-                String resultado = controller.crearCriminal(id, nombre, hobby, sexo, colorPelo, ocupacion, vehiculo, caracteristicas);
-
-                // Mostrar el resultado
-                JOptionPane.showMessageDialog(frame, resultado);
-            }
-        });
-
-        // Hacer visible la ventana
-        frame.setVisible(true);
+        if (nombreCriminal != null) {
+            lblResultado.setText("Criminal encontrado: " + nombreCriminal);
+        } else {
+            lblResultado.setText("No se encontró ningún criminal con esos datos.");
+        }
+    }
+    
+    public void mostrarVentana() {
+        setVisible(true);
     }
 
     public static void main(String[] args) {
         // Ejecutar la aplicación
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new VistaCriminal();
-            }
+        SwingUtilities.invokeLater(() -> {
+        VistaCriminal vista = new VistaCriminal();
+        vista.mostrarVentana(); 
         });
     }
 }

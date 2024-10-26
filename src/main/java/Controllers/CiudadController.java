@@ -1,49 +1,117 @@
 package Controllers;
 
-import biblioteca.Ciudad;
 import DAO.CiudadDAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CiudadController {
 
-    private static final int[][] COORDENADAS = {
-            {158, 480}, {360, 515}, {198, 474}, {509, 522}, {512, 511},
-            {349, 501}, {114, 257}, {305, 55}, {293, 468}, {359, 183},
-            {351, 434}, {310, 360}, {598, 250}, {674, 422}, {582, 341},
-            {470, 465}, {128, 160}, {85, 350}, {118, 357}, {425, 105},
-            {266, 379}
-    };
+    // SessionFactory es costosa de crear y debería ser una instancia única
+    private static SessionFactory sessionFactory;
 
-    private SessionFactory sessionFactory;
-
-    public CiudadController() {
-        sessionFactory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(CiudadDAO.class)
-                .buildSessionFactory();
+    static {
+        try {
+            // Configurar la fábrica de sesiones de Hibernate
+            sessionFactory = new Configuration()
+                    .configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(CiudadDAO.class)
+                    .buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public List<Ciudad> obtenerCiudadesConCoordenadas() {
-        List<Ciudad> ciudades = new ArrayList<>();
+    // Método para crear una nueva ciudad en la base de datos
+    public String crearCiudad(int idCiudad, String nombreCiudad, String descripcionCiudad, String imagenCiudad) {
         Session session = sessionFactory.openSession();
 
         try {
+            CiudadDAO ciudad = new CiudadDAO(idCiudad, nombreCiudad, descripcionCiudad, imagenCiudad);
+
             session.beginTransaction();
-            List<CiudadDAO> ciudadDAOs = session.createQuery("FROM CiudadDAO", CiudadDAO.class).list();
+            session.save(ciudad);
             session.getTransaction().commit();
 
-            for (int i = 0; i < ciudadDAOs.size(); i++) {
-                CiudadDAO ciudadDAO = ciudadDAOs.get(i);
-                int[] coords = COORDENADAS[i % COORDENADAS.length];
-                Ciudad ciudad = new Ciudad(ciudadDAO.getIdCiudad(), ciudadDAO.getNombre(),
-                        ciudadDAO.getDescripcion(), ciudadDAO.getRutaImagen(), coords[0], coords[1]);
-                ciudades.add(ciudad);
+            return "Ciudad creada";
+
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
             }
+            e.printStackTrace();
+            return "Error al crear ciudad";
+
+        } finally {
+            session.close();
+        }
+    }
+
+    // Método para actualizar una ciudad existente en la base de datos
+    public String actualizarCiudad(int idCiudad, String nombreCiudad, String descripcionCiudad, String imagenCiudad) {
+        Session session = sessionFactory.openSession();
+
+        try {
+            CiudadDAO ciudad = new CiudadDAO(idCiudad, nombreCiudad, descripcionCiudad, imagenCiudad);
+
+            session.beginTransaction();
+            session.update(ciudad);
+            session.getTransaction().commit();
+
+            return "Ciudad actualizada";
+
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return "Error al actualizar ciudad";
+
+        } finally {
+            session.close();
+        }
+    }
+
+    // Método para eliminar una ciudad en la base de datos
+    public String eliminarCiudad(int idCiudad) {
+        Session session = sessionFactory.openSession();
+
+        try {
+            CiudadDAO ciudad = session.get(CiudadDAO.class, idCiudad);
+
+            if (ciudad != null) {
+                session.beginTransaction();
+                session.delete(ciudad);
+                session.getTransaction().commit();
+                return "Ciudad eliminada";
+            } else {
+                return "Ciudad no encontrada";
+            }
+
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return "Error al eliminar ciudad";
+
+        } finally {
+            session.close();
+        }
+    }
+
+    // Método para obtener todas las ciudades
+    public List<CiudadDAO> obtenerTodasLasCiudades() {
+        Session session = sessionFactory.openSession();
+        List<CiudadDAO> listaCiudades = null;
+
+        try {
+            session.beginTransaction();
+            String hql = "FROM CiudadDAO";
+            listaCiudades = session.createQuery(hql, CiudadDAO.class).list();
+            session.getTransaction().commit();
         } catch (Exception e) {
             if (session.getTransaction() != null) {
                 session.getTransaction().rollback();
@@ -52,11 +120,33 @@ public class CiudadController {
         } finally {
             session.close();
         }
-
-        return ciudades;
+        return listaCiudades;
     }
 
-    public void cerrarSessionFactory() {
+    // Método para buscar una ciudad por su ID
+    public CiudadDAO buscarCiudadPorId(int idCiudad) {
+        Session session = sessionFactory.openSession();
+
+        try {
+            session.beginTransaction();
+            CiudadDAO ciudad = session.get(CiudadDAO.class, idCiudad);
+            session.getTransaction().commit();
+            return ciudad;
+
+        } catch (Exception e) {
+            if (session.getTransaction() != null) {
+                session.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return null;
+
+        } finally {
+            session.close();
+        }
+    }
+
+    // Método para cerrar la SessionFactory cuando la aplicación termina
+    public static void cerrarSessionFactory() {
         if (sessionFactory != null) {
             sessionFactory.close();
         }
