@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Pista1: El criminal fue a la cima del cerro arequita.
 Pista2: Se intereso por las grutas de salamanca.
 Pista3: Le llamaba la atencion la flora del valle del hilo de la vida.
+=======
+Pista 1: El criminal fue a la cima del cerro arequita.
+Pista 2: Se intereso por las grutas de salamanca.
+Pista 3: Le llamaba la atencion la flora del valle del hilo de la vida.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

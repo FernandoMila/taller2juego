@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Pista1: Se escondio entre las rocas de la playa.
 Pista2: Fue a pescar con los locales.
 Pista3: Estaba disfrutando del aire libre en el parque santa teresa.
+=======
+Pista 1: Se escondio entre las rocas de la playa.
+Pista 2: Fue a pescar con los locales.
+Pista 3: Estaba disfrutando del aire libre en el parque santa teresa.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

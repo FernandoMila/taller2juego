@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Pista1: Se interno en la quebrada de los cuervos.
 Pista2: Quiso aprender sobre la historia de los primeros pobladores.
 Pista3: Le gustaba el sonido del rio olimar.
+=======
+Pista 1: Se interno en la quebrada de los cuervos.
+Pista 2: Quiso aprender sobre la historia de los primeros pobladores.
+Pista 3: Le gustaba el sonido del rio olimar.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

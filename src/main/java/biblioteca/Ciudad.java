@@ -48,7 +48,6 @@ public class Ciudad {
         ciudades.add(new Ciudad(19, "Mercedes", "Descripción de Soriano", "imagenes/Ciudades/Mercedes.png", 118, 357));
         ciudades.add(new Ciudad(20, "Rivera", "Descripción de Rivera", "imagenes/Ciudades/Rivera.png", 425, 105));
         ciudades.add(new Ciudad(21, "Trinidad", "Descripción de Trinidad", "imagenes/Ciudades/Trinidad.png", 266, 379));
-      
         return ciudades;
     }
 

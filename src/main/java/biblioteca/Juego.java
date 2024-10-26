@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import java.awt.GridLayout;  // Importación añadida
+import java.util.Random;
 
 public class Juego {
-
     private List<Criminal> listaCriminales;
     private Criminal criminalSeleccionado;
     private List<Ciudad> ciudadesRuta;

@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -26,8 +29,6 @@ import java.io.BufferedWriter;  // Añadir la importación
 import java.io.FileWriter;      // Añadir la importación
 import java.io.IOException;
 
-
-
 public class Interfaz extends JFrame {
 
     // Atributos de la interfaz
@@ -36,6 +37,10 @@ public class Interfaz extends JFrame {
     JLabel labelImagen;
     JTextArea areaTexto;
     JLabel labelPuntos;
+
+    void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     JLabel labelMision; // Mostrar tiempo de misión
     JTextField campoNombreDetective;
     JButton botonConfirmarNombre;
@@ -58,6 +63,7 @@ public class Interfaz extends JFrame {
     // Nuevos atributos para el constructor con parámetros
     private Criminal criminal;
     private List<String> lista;
+
 
     // Constructor con parámetros
     public Interfaz(Criminal criminal, List<String> lista) {
@@ -103,7 +109,6 @@ public class Interfaz extends JFrame {
         panelDatos.add(labelFechaHora);
         panelDatos.add(labelPuntos);
         panelDatos.add(labelMision);  // Añadir el tiempo de misión al panel
-
         panelSuperior.add(labelNombreLugar, BorderLayout.NORTH);
         panelSuperior.add(panelDatos, BorderLayout.CENTER);
 
@@ -141,6 +146,7 @@ public class Interfaz extends JFrame {
         campoNombreDetective = new JTextField(25);
         botonConfirmarNombre = new JButton("Confirmar");
 
+        
     botonConfirmarNombre.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -153,6 +159,7 @@ public class Interfaz extends JFrame {
             botonConfirmarNombre.setEnabled(false);
             campoNombreDetective.setEnabled(false);
 
+
             // Temporizador para mostrar las pistas después de confirmar el nombre
             Timer esperaTimer = new Timer(2000, new ActionListener() {
                 @Override
@@ -160,10 +167,12 @@ public class Interfaz extends JFrame {
                     mostrarConEfectoMaquinaEscribir("Tienes " + juego.getMision() + " horas para atrapar al criminal.\n");
 
                     Timer esperaTimer1 = new Timer(3000, new ActionListener() {
+
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             List<Ciudad> ciudadesRuta = juego.getCiudadesRuta();
                             if (!ciudadesRuta.isEmpty()) {
+
                                 Ciudad primeraCiudad = ciudadesRuta.get(0);
                                 List<String> pistas = leerPistas(primeraCiudad.getNombre());
 
@@ -448,6 +457,19 @@ private void abrirDialogoTestigo(String lugar, Ciudad siguienteCiudad, String pi
         itemSonido.addActionListener(e -> Sonidos.toggleSonido(itemSonido.isSelected()));
         menuOpciones.add(itemSonido);
         menuBar.add(menuOpciones);
+        
+        JMenu menuAyuda = new JMenu("Ayuda");
+        JMenuItem itemAyuda = new JMenuItem("Ver ayuda");
+        itemAyuda.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                HelpWindow h = new HelpWindow();
+                h.setVisible(true);
+            }
+        });
+        menuAyuda.add(itemAyuda);
+        menuBar.add(menuAyuda);
+
 
         // Crear el nuevo menú de "Ayuda"
         JMenu menuAyuda = new JMenu("Ayuda");
@@ -478,6 +500,8 @@ private void abrirDialogoTestigo(String lugar, Ciudad siguienteCiudad, String pi
         });
         menuSalir.add(itemSalir);
         menuBar.add(menuSalir);
+
+        itemRanking.addActionListener(e -> mostrarRanking());
 
         return menuBar;
     }
@@ -836,6 +860,13 @@ private void reproducirSonidoVictoria() {
         });
     }
 
+    private void mostrarRanking() {
+        SwingUtilities.invokeLater(() -> {
+            RankingVista rankingVista = new RankingVista();
+            rankingVista.setVisible(true);
+        });
+    }
+
     void mostrarCiudad(Ciudad ciudad) {
         labelNombreLugar.setText(ciudad.getNombre());
         labelImagen.setIcon(new ImageIcon(ciudad.getRutaImagen()));
@@ -1139,3 +1170,48 @@ private void detenerSonidoMaquinaEscribir() {
         new Interfaz();
     }
 }
+
+
+    private Clip clip;
+
+    private void reproducirSonidoMaquinaEscribir() {
+        try {
+            InputStream audioSrc = getClass().getResourceAsStream("/teclas.wav");
+            if (audioSrc == null) {
+                throw new IOException("El archivo de sonido no se encuentra en la ruta especificada.");
+            }
+
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(bufferedIn);
+
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    
+
+    private List<String> leerPistas(String nombreCiudad) {
+        List<String> pistas = new ArrayList<>();
+        String rutaArchivo = "Pistas/" + nombreCiudad + ".txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                pistas.add(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarConEfectoMaquinaEscribir("Error al cargar las pistas de " + nombreCiudad + ".\n");
+        }
+        return pistas;
+    }
+
+    public static void main(String[] args) {
+        new Interfaz();
+    }
+}
+

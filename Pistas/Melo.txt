@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Pista1: Estaba buscando informacion en la biblioteca municipal.
 Pista2: Paso por el cerro largo para ver el paisaje.
 Pista3: El criminal exploro el barrio Centenario.
+=======
+Pista 1: Estaba buscando informacion en la biblioteca municipal.
+Pista 2: Paso por el cerro largo para ver el paisaje.
+Pista 3: El criminal exploro el barrio Centenario.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 

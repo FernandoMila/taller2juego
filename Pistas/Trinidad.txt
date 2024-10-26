@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Pista1: Estaba fascinado por el parque bartolome hidalgo.
 Pista2: Se escondio cerca del lago artificial.
 Pista3: Fue a explorar las zonas rurales que rodean la ciudad.
+=======
+Pista 1: Estaba fascinado por el parque bartolome hidalgo.
+Pista 2: Se escondio cerca del lago artificial.
+Pista 3: Fue a explorar las zonas rurales que rodean la ciudad.
+>>>>>>> 198952f78330934ced1a606eca0393a0762301a3
 
